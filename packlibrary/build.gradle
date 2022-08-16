@@ -1,7 +1,8 @@
 plugins {
     id 'com.android.library'
-    id 'maven-publish'
 }
+
+apply from: "../gradle/publish.gradle"
 
 android {
     compileSdk 32
@@ -28,19 +29,6 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
-        }
-    }
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.testjitpack'
-                artifactId = 'pack'
-                version = '0.2'
-            }
         }
     }
 }
